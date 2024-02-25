@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="sc">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/3c764c399e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Function to check if an element is in the viewport
+        function isElementInViewport(el) {
+          var rect = el.getBoundingClientRect();
+          return (
+            rect.top <= window.innerHeight &&
+            rect.bottom >= 0 &&
+            rect.left <= window.innerWidth &&
+            rect.right >= 0
+          );
+        }
+
+        // Function to handle animation based on visibility
+        function handleVisibility() {
+          $(".animated-element").each(function () {
+            if (isElementInViewport(this) && $(window).scrollTop() > 0) {
+              // If the element is in view and scrolling down, add the "animate" class
+              $(this).addClass("animate");
+            } else {
+              // If not in view or scrolling up, remove the "animate" class
+              $(this).removeClass("animate");
+            }
+          });
+        }
+
+        // Check on scroll
+        $(window).scroll(function () {
+          handleVisibility();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="header">
+      <div class="container">
+        <nav>
+          <img src="images/Skärmbild 2024-02-16 191744.png" class="logo" />
+          <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+              <!-- <button id="darkModeToggle">
+                <i class="fa-regular fa-sun"></i> -->
+              </button>
+            </li>
+            <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+          </ul>
+          <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <div class="header-text animated-element">
+          <p>Hello and welcome</p>
+          <h1>
+            I'm <span>Niklas Sjödin</span><br />
+            A fullstack developer.<br />
+          </h1>
+        </div>
+      </div>
+    </div>
+    <!---------------------about---------------------------->
+    <div id="about">
+      <div class="container">
+        <div class="row">
+          <div class="about-col-1 animated-element">
+            <img src="images/user.jpg" />
+          </div>
+          <div class="about-col-2 animated-element">
+            <h1 class="subtitle">About Me</h1>
+            <p>
+              I'm currently a fullstack developer student in .NET at Chas
+              Academy with a graduation in 2025.
+            </p>
+            <div class="tab-titles">
+              <p
+                class="tab-links active-link"
+                onclick="opentab('skills', event)"
+              >
+                Skills
+              </p>
+              <p class="tab-links" onclick="opentab('experience', event)">
+                Experience
+              </p>
+              <p class="tab-links" onclick="opentab('education', event)">
+                Education
+              </p>
+            </div>
+            <div class="tab-contents active-tab" id="skills">
+              <ul>
+                <li>
+                  <span>.NET and C#</span><br />Building console applications
+                  and working with APIs
+                </li>
+                <li>
+                  <span>SQL</span><br />Working with databases and writing
+                  functional querys.
+                </li>
+                <li><span>HTML, CSS</span><br />Designing simple websites.</li>
+                <li><span>Git, Github</span><br />Version control.</li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="experience">
+              <ul>
+                <li>
+                  <span>2023 - Current</span><br />Fullstack developer .NET
+                </li>
+                <li><span>2023</span><br />Programmering 1, Python.</li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="education">
+              <ul>
+                <li>
+                  <span>2023 - 2025</span><br />Chas Academy, fullstack .NET.
+                </li>
+                <li>
+                  <span>2008-2011</span><br />Tumba Gymnasium, sports and
+                  leadership.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------services------------------->
+    <div id="services">
+      <div class="container">
+        <h1 class="sub-title animated-element">My Services</h1>
+        <div class="services-list">
+          <div class="animated-element">
+            <i class="fa-solid fa-code"></i>
+            <h2>Web Design</h2>
+            <p>Designing websites to both the web and mobile.</p>
+          </div>
+          <div>
+            <i class="fa-solid fa-crop-simple"></i>
+            <h2>Console applications.</h2>
+            <p>
+              Console applications desgined in C#, .NET and with the help of
+              databases using MS SQL Server.
+            </p>
+          </div>
+          <div>
+            <i class="fa-brands fa-app-store"></i>
+            <h2>Git/Github</h2>
+            <p>Version control with Git and Github.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-------------------portfolio----------------------->
+    <div id="portfolio">
+      <div class="container">
+        <h1 class="sub-title animated-element">My Work</h1>
+        <div class="work-list">
+          <div class="work animated-element">
+            <img src="images/Netify2.jpg" />
+            <div class="layer">
+              <h3>Music App</h3>
+              <p>
+                A console application that uses the spotify API to retrive all
+                the artist, tracks, popularity of of each artist and the
+                danceability of each track. A group project made by me and three
+                other students.
+              </p>
+            </div>
+          </div>
+          <div class="work">
+            <img src="images/banknet4.jpg" />
+            <div class="layer">
+              <h3>Bank App</h3>
+              <p>
+                A console application that work just like a bank. Insert money,
+                withdraw money, check the balance of each account, open new
+                account, send money between your accounts and others bank
+                accounts. Made by me and three other students.
+              </p>
+            </div>
+          </div>
+          <div class="work">
+            <img src="images/api2.jpg" />
+            <div class="layer">
+              <h3>Minimal API</h3>
+              <p>
+                This project aims to develop a system for storing individuals'
+                essential details like names and phone numbers. It supports the
+                storage of multiple interests per person, each having a title
+                and brief description. Individuals can be connected to various
+                interests, and multiple website links can be associated with
+                both individuals and their interests.
+              </p>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn animated-element">See More</a>
+      </div>
+    </div>
+    <!------------------contact---------------------->
+    <div id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="contact-left animated-element">
+            <h1 class="sub-title">Contact Me</h1>
+            <p><i class="fa-solid fa-paper-plane"></i>Sjoodiin@hotmail.com</p>
+            <p><i class="fa-solid fa-square-phone"></i>Call me</p>
+            <div class="social-icons">
+              <a href="https://github.com/NiklasSjodin/" target="_blank"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a href="https://www.instagram.com/niklassjodin/" target="_blank"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/niklas-sj%C3%B6din-626438b9/"
+                target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+            </div>
+            <a href="images/my-cv.pdf" download class="btn btn2"
+              >Download CV</a
+            >
+          </div>
+          <div class="contact-right animated-element">
+            <form name="submit-to-google-sheet">
+              <input type="text" name="Name" placeholder="Your Name" required />
+              <input
+                type="email"
+                name="Email"
+                placeholder="Your Email"
+                required
+              />
+              <textarea
+                name="Message"
+                rows="6"
+                placeholder="Your Message"
+              ></textarea>
+              <button type="submit" class="btn btn2">Submit</button>
+            </form>
+            <span id="msg" class="animated-element"></span>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p class="animated-element">
+          Copyright © Niklas. Made with <i class="fa-solid fa-heart"></i>
+        </p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
